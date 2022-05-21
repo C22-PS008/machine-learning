@@ -1,0 +1,164 @@
+{
+    "intents": [
+        {
+            "tag": "sapaan",
+            "input": [
+                "Halo",
+                "Hai",
+                "Hi",
+                "Hey"
+            ],
+            "response": [
+                "Hai",
+                "Halo"
+            ]
+        },
+        {
+            "tag": "akhir",
+            "input": [
+                "Dah",
+                "Selamat tinggal",
+                "Sampai jumpa"
+            ],
+            "response": [
+                "Sampai jumpa!",
+                "Selamat tinggal"
+            ]
+        },
+        {
+            "tag": "terima kasih",
+            "input": [
+                "terimakasih",
+                "terima kasih"
+            ],
+            "response": [
+                "terima kasih kembali",
+                "Dengan senang hati"
+            ]
+        },
+        {
+            "tag": "Nama",
+            "question": [
+                "Kalau boleh tau, siapa nama kamu?",
+                "Siapa nama kamu?",
+                "Nama kamu siapa?"
+            ],
+            "input": [
+                "Namaku $name",
+                "$name"
+            ],
+            "response": [
+                "Senang berkenalan denganmu, $name !",
+                "Halo $name !",
+                "Hai $name !"
+            ]
+        },
+        {
+            "tag": "Umur",
+            "question": [
+                "Berapa umur kamu sekarang?",
+                "Berapa usia kamu sekarang?",
+                "Oh iya, umur kamu berapa?"
+            ],
+            "input": [
+                "Umurku $age tahun",
+                "Umurku $age",
+                "Usiaku $age",
+                "Aku berusia $age tahun"
+            ],
+            "response": [
+                "Okay, noted",
+                "Okay"
+            ]
+        },
+        {
+            "tag": "Pendidikan",
+            "question": [
+                "Apa pendidikan terakhirmu?",
+                "Apa pendidikan terakhir atau pendidikan yang sedang dijalani?"
+            ],
+            "input": [
+                "$degree",
+                "Pendidikan terakhirku $degree"
+            ],
+            "response": [
+                "Okay, noted",
+                "Okay"
+            ]
+        },
+        {
+            "tag": "Pengalaman",
+            "question": [
+                "Apa sajakah pengalaman profesional yang telah dimiliki?",
+                "Apakah kamu sudah memiliki pengalaman profesional?"
+            ],
+            "input": [
+                "$experience"
+            ],
+            "response": [
+                "Okay, noted",
+                "Okay"
+            ]
+        },
+        {
+            "tag": "Skill",
+            "question": [
+                "Skill atau kemampuan apa sajakah yang dimiliki olehmu?",
+                "Skill apakah yang kamu miliki untuk menunjang pekerjaan yang diinginkan?"
+            ],
+            "input": [
+                "$skill"
+            ],
+            "response": [
+                "Okay, noted",
+                "Okay"
+            ]
+        },
+        {
+            "tag": "Pekerjaan",
+            "question": [
+                "Pekerjaan apakah yang kamu inginkan?",
+                "Apa pekerjaan yang kamu inginkan?"
+            ],
+            "input": [
+                "Aku ingin menjadi $job",
+                "Menjadi $job",
+                "$job"
+            ],
+            "response": [
+                "Okay, noted",
+                "Okay"
+            ]
+        },
+        {
+            "tag": "Sertifikasi",
+            "question": [
+                "Apakah kamu memiliki sertifikasi profesional?",
+                "Sertfikasi profesional apakah yang dimiliki?"
+            ],
+            "input": [
+                "$certification"
+            ],
+            "response": [
+                "Okay, noted",
+                "Okay"
+            ]
+        },
+        {
+            "tag": "Penghasilan",
+            "question": [
+                "Berapa nominal penghasilan per bulan yang kamu harapkan?"
+            ],
+            "input": [
+                "Berkisar $salary",
+                "Kisaran $salary",
+                "Sekitar $salary",
+                "$salary"
+            ],
+            "response": [
+                "Okay, noted",
+                "Okay"
+            ]
+        }
+    ]
+}
