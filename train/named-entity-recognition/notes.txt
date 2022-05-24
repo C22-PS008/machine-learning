@@ -1,0 +1,11 @@
+1 perusahaan: some of unicorn companies in indonesia (1 word)
+2 skills: such as programming language (1 word)
+3 universitas: (top 10) (1 word)
+4 profesi: (2 word)
+5 others
+
+
+source of the article:
+campus.quipper.com
+https://www.kompas.com/wiken/read/2022/01/01/091500881/daftar-startup-yang-berstatus-unicorn-di-indonesia-tahun-2021?page=all.
+https://katadata.co.id/safrezifitra/berita/611e2c3aec425/10-universitas-terbaik-di-indonesia-versi-qs-world-ranking
