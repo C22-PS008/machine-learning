@@ -17,8 +17,11 @@ def model(input):
         word_individual=result[i].get('word')
         word.append(word_individual)
     return entity_group,word
-def post_user_data(user_id):
-    
+@app.post("/api/chatbot_simulation")
+async def root(message: user_input):
+    entity_group,word=model(user_input)
+    if entity_group=="PER":
+        return{"name":word}
     
 
 @app.get("/")
