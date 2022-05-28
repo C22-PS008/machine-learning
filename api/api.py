@@ -17,6 +17,9 @@ def model(input):
         word_individual=result[i].get('word')
         word.append(word_individual)
     return entity_group,word
+def post_user_data(user_id):
+    
+    
 
 @app.get("/")
 async def root():
