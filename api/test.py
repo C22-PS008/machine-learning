@@ -30,23 +30,19 @@ def model(input):
     entity_group=[]
     word=[]
     if len(result)>=0:
-        for i in range(len(result)):
-            entity_group_individual=result[i].get('entity_group')
-            entity_group.append(entity_group_individual)
-            word_individual=result[i].get('word')
-            word.append(word_individual)
-        return entity_group,word
+        return result
     else:
         return "No entity found"
-hasil=model("My name is Joko and I work at Universitas Indonesia in Jakarta.")
+        
+hasil=model("My name is Joko")
 
 print(hasil[0])
 pindah_hasil={}
 print(len(pindah_hasil))
 pindah_hasil=hasil
 print(pindah_hasil)
- for i in len(result):
-                if entity_group[i]=='PER':
-                    word=result[i].get('word')
-                    greet_user="Hello, " + word + "!"
-                    return {'result':result}
+for i in range(len(hasil)):
+    if hasil[i].get('entity_group')=='PER':
+        words=hasil[i].get('word')
+        greet_user="Hello, " + words + "!"
+        print(greet_user)
