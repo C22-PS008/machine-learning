@@ -1,6 +1,9 @@
+from lib2to3.pgen2.tokenize import tokenize
 from statistics import mode
 import json_parser
 import json
+
+import tokenizers
 
 
 def model(input):
@@ -20,9 +23,9 @@ x =  '{ "name":"John", "age":30, "city":"New York"}'
 user_input=json_parser.parse(x).get("name")
 print(user_input)
 def model(input):
-    from transformers import pipeline
+    from transformers import TFBertForTokenClassification, pipeline, AutoTokenizer
     model_checkpoint = "chanifrusydi/bert-finetuned-ner"
-    token_classifier = pipeline("token-classification", model=model_checkpoint, aggregation_strategy="simple")
+    token_classifier = pipeline("token-classification", model=model_checkpoint,  aggregation_strategy="simple")
     result=token_classifier(input)
     entity_group=[]
     word=[]
@@ -36,7 +39,14 @@ def model(input):
     else:
         return "No entity found"
 hasil=model("My name is Joko and I work at Universitas Indonesia in Jakarta.")
+
+print(hasil[0])
 pindah_hasil={}
 print(len(pindah_hasil))
 pindah_hasil=hasil
-print(pindah_hasil[0][0])
+print(pindah_hasil)
+ for i in len(result):
+                if entity_group[i]=='PER':
+                    word=result[i].get('word')
+                    greet_user="Hello, " + word + "!"
+                    return {'result':result}

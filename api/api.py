@@ -6,6 +6,7 @@ from flask_restful import Api, Resource, reqparse
 
 
 import json_parser
+from matplotlib.pyplot import get
 
 user_input_args=reqparse.RequestParser()
 user_input_args.add_argument('message', type=str, required=True, help='message')
@@ -22,12 +23,7 @@ def model(input):
     entity_group=[]
     word=[]
     if len(result)>=0:
-        for i in range(len(result)):
-            entity_group_individual=result[i].get('entity_group')
-            entity_group.append(entity_group_individual)
-            word_individual=result[i].get('word')
-            word.append(word_individual)
-        return entity_group,word
+        return result
     else:
         return "No entity found"
 user_input_dict={}
@@ -37,35 +33,16 @@ class Chatbot(Resource):
         user_input=user_input_args.parse_args()
         message=user_input["message"]
         result=model(message)
-        return {'message':message}
-        # try:
-        #     for i in len(result):
-        #         if entity_group[i]=='PER':
-        #             greet_user="Hello, "+word[i]
-        #             return {'result':result}
-        # except(Exception):
-        #     return Exception
+        try:
+            for i in range(len(result)):
+                if result[i].get('entity_group')=='PER':
+                    words=result[i].get('word')
+                    greet_user="Hello, " + words + "!"
+                    return {'greet_user':greet_user}
+        except(Exception):
+            return Exception
     def get(self):
         pass
 
 api.add_resource(Chatbot, '/chatbot')
-
-
-async def chatbot_simulation(input: str):
-    user_input=input
-    entity_group,word=model(user_input)
-    if len(entity_group)>=0:
-        for i in len(entity_group):
-            if entity_group=="PER":
-                return{"name":word[i]}
-    else:
-        return{"name":"No entity found"}
-    
-
-async def root():
-    token_class=[]
-    token_classification=model("My name is Joko and I work at Universitas Indonesia in Jakarta.")
-    token_class.append(token_classification)
-    return{'token':token_class}
-    
 app.run(host="localhost",port=5000,debug=True)
