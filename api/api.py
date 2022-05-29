@@ -1,8 +1,8 @@
-from lib2to3.pgen2 import token
-from fastapi import FastAPI
+from flask import Flask, request, jsonify
+from flask_restful import Api  
 
-app = FastAPI()
-
+app=Flask(__name__)
+api=Api(app)
 
 def model(input):
     from transformers import pipeline
@@ -21,19 +21,25 @@ def model(input):
     else:
         return "No entity found"
 
-@app.post("/api/chatbot_simulation")
-async def root(message: user_input):
+
+
+
+async def chatbot_simulation(input: str):
+    user_input=input
     entity_group,word=model(user_input)
-    if entity_group=="PER":
-        return{"name":word}
+    if len(entity_group)>=0:
+        for i in len(entity_group):
+            if entity_group=="PER":
+                return{"name":word[i]}
     else:
         return{"name":"No entity found"}
     
 
-@app.get("/")
+
 async def root():
     token_class=[]
     token_classification=model("My name is Joko and I work at Universitas Indonesia in Jakarta.")
     token_class.append(token_classification)
     return{'token':token_class}
     
+app.run(host="loaclhost",port=5000)
