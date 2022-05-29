@@ -11,17 +11,23 @@ def model(input):
     result=token_classifier(input)
     entity_group=[]
     word=[]
-    for i in range(len(result)):
-        entity_group_individual=result[i].get('entity_group')
-        entity_group.append(entity_group_individual)
-        word_individual=result[i].get('word')
-        word.append(word_individual)
-    return entity_group,word
+    if len(result)>=0:
+        for i in range(len(result)):
+            entity_group_individual=result[i].get('entity_group')
+            entity_group.append(entity_group_individual)
+            word_individual=result[i].get('word')
+            word.append(word_individual)
+        return entity_group,word
+    else:
+        return "No entity found"
+
 @app.post("/api/chatbot_simulation")
 async def root(message: user_input):
     entity_group,word=model(user_input)
     if entity_group=="PER":
         return{"name":word}
+    else:
+        return{"name":"No entity found"}
     
 
 @app.get("/")
