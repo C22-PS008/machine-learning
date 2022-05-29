@@ -1,7 +1,7 @@
 import requests
 import json
 
-url='http://localhost:8000/chatbot'
+url='http://localhost:5000/chatbot'
 endpoint='simulation'
 api_endpoint=url+'/'+endpoint
 print(api_endpoint)

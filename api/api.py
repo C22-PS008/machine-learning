@@ -1,6 +1,15 @@
+from unittest import result
+from click import argument
 from flask import Flask, request, jsonify
-from flask_restful import Api, Resource
-import chatbot_simulation
+from flask_restful import Api, Resource, reqparse
+
+
+
+import json_parser
+
+user_input_args=reqparse.RequestParser()
+user_input_args.add_argument('message', type=str, required=True, help='message')
+
 
 app=Flask(__name__)
 api=Api(app)
@@ -21,13 +30,23 @@ def model(input):
         return entity_group,word
     else:
         return "No entity found"
+user_input_dict={}
+
 class Chatbot(Resource):
     def post(self):
-        user_input=request.json['message']
-        bot=chatbot_simulation(user_input)
-        return bot
+        user_input=user_input_args.parse_args()
+        message=user_input["message"]
+        result=model(message)
+        return {'message':message}
+        # try:
+        #     for i in len(result):
+        #         if entity_group[i]=='PER':
+        #             greet_user="Hello, "+word[i]
+        #             return {'result':result}
+        # except(Exception):
+        #     return Exception
     def get(self):
-        return "Hello, im chatbot, I will help you find suitables categories for you. Okay, how should I call you?"
+        pass
 
 api.add_resource(Chatbot, '/chatbot')
 
@@ -49,4 +68,4 @@ async def root():
     token_class.append(token_classification)
     return{'token':token_class}
     
-app.run(host="localhost",port=5000)
+app.run(host="localhost",port=5000,debug=True)
