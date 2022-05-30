@@ -17,3 +17,4 @@ user_input=input()
 endpoint='get_age'
 api_endpoint=url+'/'+endpoint
 age_response=requests.post(api_endpoint,json={'age':user_input})
+print(age_response.json())

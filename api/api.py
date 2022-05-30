@@ -48,7 +48,8 @@ class Chatbot(Resource):
             return {'greet_user':"Hello, I cant get your name, would you mind to type it again?."}
 
 api.add_resource(Chatbot, '/chatbot')
-@app.route('/chatbot/get_age')
+
+@app.route('/chatbot/get_age', methods=['POST'])
 def get_age():
     user_input=user_input_args.parse_args()
     user_age=user_input["age"]
