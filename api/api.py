@@ -1,11 +1,5 @@
-from typing_extensions import Required
-from unittest import result
-from click import argument
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource, reqparse
-
-from matplotlib.pyplot import get
-from transformers import RoFormerForQuestionAnswering
 
 user_input_args=reqparse.RequestParser()
 user_input_args.add_argument('message', type=str, help='message')
@@ -25,13 +19,23 @@ def load_ner_model(input):
     else:
         return "No entity found"
 
+def load_chatbot_model(input):
+    from transformers import pipeline
+    model_checkpoint = "chanifrusydi/bert-finetuned-chatbot"
+    chatbot_model = pipeline("question-answering", model=model_checkpoint)
+    result=chatbot_model(input)
+    if len(result)!=0:
+        return result
+    else:
+        return "No entity found"
+
 user_input_dict={}
 
 class get_user_call_name(Resource):
     def post(self):
         user_input=user_input_args.parse_args()
         user_message=user_input["message"]
-        result=model(user_message)
+        result=load_ner_model(user_message)
         # for i in range(len(result)):
         #     if result[0].get('entity_group')=='PER':
         #         words=result[0].get('word')
