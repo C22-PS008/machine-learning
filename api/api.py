@@ -1,3 +1,4 @@
+from typing_extensions import Required
 from unittest import result
 from click import argument
 from flask import Flask, request, jsonify
@@ -7,14 +8,14 @@ from matplotlib.pyplot import get
 from transformers import RoFormerForQuestionAnswering
 
 user_input_args=reqparse.RequestParser()
-user_input_args.add_argument('message', type=str, required=True, help='message')
-user_input_args.add_argument('age', type=str, required=True, help='age')
+user_input_args.add_argument('message', type=str, help='message')
+user_input_args.add_argument('age', type=int, help='age')
 
 
 app=Flask(__name__)
 api=Api(app)
 
-def model(input):
+def load_ner_model(input):
     from transformers import pipeline
     model_checkpoint = "chanifrusydi/bert-finetuned-ner"
     token_classifier = pipeline("token-classification", model=model_checkpoint, aggregation_strategy="simple")
@@ -26,7 +27,7 @@ def model(input):
 
 user_input_dict={}
 
-class Chatbot(Resource):
+class get_user_call_name(Resource):
     def post(self):
         user_input=user_input_args.parse_args()
         user_message=user_input["message"]
@@ -47,13 +48,15 @@ class Chatbot(Resource):
         else:
             return {'greet_user':"Hello, I cant get your name, would you mind to type it again?."}
 
-api.add_resource(Chatbot, '/chatbot')
+class get_age(Resource):
+    def post(self):
+        user_input=user_input_args.parse_args()
+        user_age=user_input["age"]
+        user_input_dict['age']=user_age
+        return jsonify(user_input_dict)
 
-@app.route('/chatbot/get_age', methods=['POST'])
-def get_age():
-    user_input=user_input_args.parse_args()
-    user_age=user_input["age"]
-    user_input_dict['age']=user_age
-    return jsonify(user_input_dict)
+
+api.add_resource(get_user_call_name, '/chatbot/getusercallname')
+api.add_resource(get_age, '/chatbot/getage')
 
 app.run(host="localhost",port=5000,debug=True)
