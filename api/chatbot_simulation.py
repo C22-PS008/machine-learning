@@ -1,16 +1,13 @@
 import requests
-import json
 
-url='http://localhost:5000/chatbot'
+url='http://127.0.0.1:5000/chatbot'
 endpoint='simulation'
 api_endpoint=url+'/'+endpoint
 print(api_endpoint)
 
-def start_chat():
-    print("Hello, im chatbot, I will help you find suitables categories for you. Okay, how should I call you?")
-    user_input=input()
-    response=requests.post(api_endpoint,data={"message":user_input})
-    return response.json()
-
-bot=start_chat()
-print(bot)
+print("Hello, im chatbot, I will help you find suitables categories for you. Okay, how should I call you?")
+user_input=input()
+print(type(user_input))
+post_json={'message':user_input}
+response=requests.post(url,json=post_json)
+print(response.json())
