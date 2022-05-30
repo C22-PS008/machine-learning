@@ -27,22 +27,18 @@ def model(input):
     model_checkpoint = "chanifrusydi/bert-finetuned-ner"
     token_classifier = pipeline("token-classification", model=model_checkpoint,  aggregation_strategy="simple")
     result=token_classifier(input)
-    entity_group=[]
-    word=[]
+    # entity_group=[]
+    # word=[]
     if len(result)>=0:
         return result
     else:
         return "No entity found"
         
-hasil=model("My name is Joko")
+hasil=model("My name is")
 
-print(hasil[0])
-pindah_hasil={}
-print(len(pindah_hasil))
-pindah_hasil=hasil
-print(pindah_hasil)
+print(len(hasil))
+print(hasil)
 for i in range(len(hasil)):
     if hasil[i].get('entity_group')=='PER':
         words=hasil[i].get('word')
-        greet_user="Hello, " + words + "!"
-        print(greet_user)
+        print(words)
