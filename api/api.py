@@ -8,6 +8,7 @@ from transformers import RoFormerForQuestionAnswering
 
 user_input_args=reqparse.RequestParser()
 user_input_args.add_argument('message', type=str, required=True, help='message')
+user_input_args.add_argument('age', type=str, required=True, help='age')
 
 
 app=Flask(__name__)
@@ -46,10 +47,12 @@ class Chatbot(Resource):
         else:
             return {'greet_user':"Hello, I cant get your name, would you mind to type it again?."}
 
-    def get(self):
-        pass
-
 api.add_resource(Chatbot, '/chatbot')
-
+@app.route('/chatbot/get_age')
+def get_age():
+    user_input=user_input_args.parse_args()
+    user_age=user_input["age"]
+    user_input_dict['age']=user_age
+    return jsonify(user_input_dict)
 
 app.run(host="localhost",port=5000,debug=True)

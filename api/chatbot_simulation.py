@@ -11,3 +11,9 @@ print(type(user_input))
 post_json={'message':user_input}
 response=requests.post(url,json=post_json)
 print(response.json())
+
+print("Okay, what is your age?")
+user_input=input()
+endpoint='get_age'
+api_endpoint=url+'/'+endpoint
+age_response=requests.post(api_endpoint,json={'age':user_input})
