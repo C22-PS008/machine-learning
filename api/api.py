@@ -36,13 +36,6 @@ class get_user_call_name(Resource):
         user_input=user_input_args.parse_args()
         user_message=user_input["message"]
         result=load_ner_model(user_message)
-        # for i in range(len(result)):
-        #     if result[0].get('entity_group')=='PER':
-        #         words=result[0].get('word')
-        #         print(words)
-        #         return {"result":words}
-        # else:
-        #     return {"result":"No entity found"}
         if result!="No entity found":
             for i in range(len(result)):
                 if result[i].get('entity_group')=='PER':
