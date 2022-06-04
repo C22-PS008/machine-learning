@@ -42,3 +42,8 @@ for i in range(len(hasil)):
     if hasil[i].get('entity_group')=='PER':
         words=hasil[i].get('word')
         print(words)
+
+# Git setting for model repository and login to huggingface
+!pip install git-lfs
+!git config --global user.name "chanifrusydi"
+!git config --global user.email "chanif.rusydi@gmail.com"

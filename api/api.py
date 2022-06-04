@@ -1,6 +1,7 @@
+import imp
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource, reqparse
-
+import pathlib
 user_input_args=reqparse.RequestParser()
 user_input_args.add_argument('message', type=str, help='message')
 user_input_args.add_argument('age', type=int, help='age')
@@ -9,6 +10,14 @@ user_input_args.add_argument('age', type=int, help='age')
 app=Flask(__name__)
 api=Api(app)
 
+def check_if_model_downloaded(model_name):
+    import os
+    model_path=os.path.join("../model/", model_name)
+    relative_path=pathlib.Path(model_path)
+    if relative_path.exists():
+        return relative_path
+    else:
+        return False
 def load_ner_model(input):
     from transformers import pipeline
     model_checkpoint = "chanifrusydi/bert-finetuned-ner"

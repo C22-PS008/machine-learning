@@ -9,7 +9,7 @@ print("Hello, im chatbot, I will help you find suitables categories for you. Oka
 user_input=input()
 print(type(user_input))
 post_json={'message':user_input}
-response=requests.post(endpoint,json=post_json)
+response=requests.post(api_endpoint,json=post_json)
 print(response.json())
 
 print("Okay, what is your age?")
