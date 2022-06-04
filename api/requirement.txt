@@ -1,5 +1,9 @@
-transformer
-pytorch
+transformers
+torch
 tensorflow
 flask
+<<<<<<< HEAD
 pandas
+=======
+pandas
+>>>>>>> 31927d65370d2605a58b00f5b4eab00fd26a192d
