@@ -1,5 +1,5 @@
-transformer
-pytorch
+transformers
+torch
 tensorflow
 flask
 pandas
