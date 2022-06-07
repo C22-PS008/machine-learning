@@ -20,7 +20,7 @@ def check_if_model_downloaded(model_name):
         return False
 def load_ner_model(input):
     from transformers import pipeline
-    model_checkpoint = "chanifrusydi/bert-finetuned-ner"
+    model_checkpoint = "chanifrusydi/distillbert-finetuned-ner"
     token_classifier = pipeline("token-classification", model=model_checkpoint, aggregation_strategy="simple")
     result=token_classifier(input)
     if len(result)!=0:
