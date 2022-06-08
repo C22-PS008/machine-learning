@@ -7,12 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- CSS -->
     <style>
+        /* CC4950 - bawah
+FAFAFA - background */
         body {
-            background-color: #f4f4f2;
+            background-color: #FAFAFA;
         }
         a {
-            color: #f4f4f2;
+            color: #FAFAFA;
             text-decoration: none;
+        }
+        .red-bg {
+            background-color: #CC4950;
         }
     </style>
     <!-- Bootstrap CSS -->
@@ -21,17 +26,68 @@
   <body>
     <div class="container-fluid">
         <!-- greets -->
-        <div class="container">
-            <h2>Hi, {{ name }}</h2>
-            <p>Berikut ini adalah ringkasan karirmu!</p>
+        <!-- <div class="header fixed-top red-bg" style="height: 150px;">
+            <div class="row">
+                <div class="col">
+
+                </div>    
+                <div class="col-9 align-middle text-left bg-success">
+                    <h2>Hi, {{ name }}</h2>
+                    <p>Berikut ini adalah ringkasan karirmu!</p>
+                </div>
+                <div class="col">
+                    
+                </div>
+            </div>
+        </div> -->
+        <div class="header">
+            <div class="bg-image" style="
+                        background-image: url(https://images.unsplash.com/photo-1539376248633-cf94fa8b7bd8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
+                        height: 150px;
+                        ">
+                <div class="mask text-white" style="background-color: rgba(55, 55, 55, 0.7);">
+                    <div class="container align-items-center">
+                        <div class="row">
+                            <div class="row">
+
+                            </div>
+                            <div class="row-8">
+                                <h1 class=" px-4 pt-5 text-left">Halo, {{ name }}</h1>
+                                <p class="px-4 pb-4">
+                                    Berikut ini adalah ringkasan karirmu!
+                                </p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container-fluid p-5">
+            <div class="row p-3">
+                {{ university }}
+            </div>
+            <div class="row p-3">
+                {{ skills }}
+            </div>
+            <div class="row p-3">
+                {{ profession }}
+            </div>
+            <div class="row p-3">
+                {{ certification }}
+            </div>
+            <div class="row p-3">
+                <p>Ringkasan:<br>
+                    {{ summary }}
+                </p>
+            </div>
         </div>
 
-        <div class="container">
-            <ul class="list-group">
-                <li class="list-group-item">{{ university }}</li>
-                <li class="list-group-item">{{ skills }}</li>
-                <li class="list-group-item">{{ profession }}</li>
-            </ul>
+        <div class="footer fixed-bottom red-bg">
+            <div class="text-right px-3 py-3 text-white">
+                Konsult-in
+            </div>
         </div>
     </div>     
     <!-- Optional JavaScript -->
