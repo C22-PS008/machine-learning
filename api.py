@@ -65,16 +65,8 @@ class get_age(Resource):
         user_age=user_input["age"]
         user_input_dict['age']=user_age
         return jsonify(user_input_dict)
-
-<<<<<<< HEAD
-
+        
 api.add_resource(get_user_call_name, '/chatbot/getusercallname')
 api.add_resource(get_age, '/chatbot/getage')
 
 app.run(host="0.0.0.0",port=args.port,debug=True)
-=======
-if __name__ == '__main__':
-    api.add_resource(get_user_call_name, '/chatbot/getusercallname')
-    api.add_resource(get_age, '/chatbot/getage')
-    app.run(host="0.0.0.0",port=5000,debug=True)
->>>>>>> 05d666082df4e8af4c92f0475b275a7e42a842d6
