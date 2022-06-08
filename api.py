@@ -1,10 +1,15 @@
-import imp
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource, reqparse
 import pathlib
+import argparse
+parser=argparse.ArgumentParser()
+
 user_input_args=reqparse.RequestParser()
 user_input_args.add_argument('message', type=str, help='message')
 user_input_args.add_argument('age', type=int, help='age')
+
+parser.add_argument('--port', type=int,  default=8000,help='port')
+args=parser.parse_args()
 
 
 app=Flask(__name__)
@@ -65,4 +70,4 @@ class get_age(Resource):
 api.add_resource(get_user_call_name, '/chatbot/getusercallname')
 api.add_resource(get_age, '/chatbot/getage')
 
-app.run(host="0.0.0.0",port=5000,debug=True)
+app.run(host="0.0.0.0",port=args.port,debug=True)
