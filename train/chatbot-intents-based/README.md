@@ -1,7 +1,7 @@
 # Intents Based Model
-## Depencies
+## Dependencies
 
-Depencies that used `Tensorflow`, `numpy`, `pandas`, `json` and `matplotllib`.
+Dependencies that used `Tensorflow`, `numpy`, `pandas`, `json` and `matplotllib`.
 
 ## Load data and Preprocessing
 Load the dataset
