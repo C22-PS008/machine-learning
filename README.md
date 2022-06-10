@@ -1,9 +1,10 @@
 # machine-learning
 ## This repository is the repository of machine learning cohort for Bangkit Capstone.
 
-Huge thanks to [HuggingFace](https://huggingface.co) for esay to use pipeline, dataset,base model.
+Huge thanks to [HuggingFace](https://huggingface.co) for easy to use pipeline, dataset,base model.
 ## Code Reference, Base Model, Dataset
-- [HuggingFace](https://huggingface.co)
+-[Chatbot Intent Based](/train/chatbot-intents-based/README.md)
+
 ## How to use the api: 
 ### Make sure you have the following environment set:
   Python 3.6+, PyTorch 1.1.0+, TensorFlow 2.0+.
@@ -13,7 +14,7 @@ Huge thanks to [HuggingFace](https://huggingface.co) for esay to use pipeline, d
   ```bash
     sh api.sh
   ```
-  This will depedencies anand run api code on api cirectory.
+  This will depedenciesand run api code on api directory.
 2. Second Method
   ```
   pip install -r requirement.txt
