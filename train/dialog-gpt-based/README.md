@@ -62,3 +62,4 @@ DEFINE FUNCTION process_token_list(token_list):
     RETURN new_token_list
 ```
 
+## Training and Save the Model
