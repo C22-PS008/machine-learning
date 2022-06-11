@@ -4,10 +4,11 @@ from reportlab.platypus import Paragraph, Spacer, Table, Image, SimpleDocTemplat
 from reportlab.lib.styles import getSampleStyleSheet
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.pagesizes import letter
-from sklearn import datasets
+
+
 
 def export_to_pdf(json_filename, output_filename):
-    file = open(filename, 'r')
+    file = open(json_filename, 'r')
     data=json.load(file)
     df=pd.json_normalize(data)
     name = df.loc[0, 'name']
@@ -15,20 +16,19 @@ def export_to_pdf(json_filename, output_filename):
     skills = df.loc[0, 'skills']
     profession = df.loc[0, 'profession']
 
-file = open('dataset.json', 'r')
-data=json.load(file)
-df=pd.json_normalize(data)
-name = df.loc[0, 'name']
-univ = df.loc[0, 'university']
-skills = df.loc[0, 'skills']
-profession = df.loc[0, 'profession']
-title_name="Test"
-output_filename='test2.pdf'
-user_info=f"Name : {name}<br/> Institution: {univ}<br/> Skills: {skills}<br/> Profession: {profession}"
-document=["name", "university", "skills", "profession"]
-report=SimpleDocTemplate(output_filename, pagesize=A4)
-styles = getSampleStyleSheet()
-empty_line=Spacer(0,20)
-ReportTitle = Paragraph(title_name)
-UserInformartion = Paragraph(user_info)
-report.build([ReportTitle,empty_line,UserInformartion])
+    summarize= df.loc[0, 'summary']
+
+    title_name="Test"
+    output_filename='test2.pdf'
+    user_info=f"Name : {name}<br/> Institution: {univ}<br/> Skills: {skills}<br/> Profession: {profession}"
+    summary_text=f"Summary : <br/> {summarize}"
+    report=SimpleDocTemplate(output_filename, pagesize=A4)
+    styles = getSampleStyleSheet()
+    empty_line=Spacer(0,20)
+    ReportTitle = Paragraph(title_name)
+    UserInformation = Paragraph(user_info)
+    Summary = Paragraph(summary_text)
+    report.build([ReportTitle,empty_line,UserInformation,empty_line,Summary])
+
+result=export_to_pdf('dataset.json','test.pdf')
+print(result)

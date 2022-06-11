@@ -2,5 +2,6 @@
     "name":"Huda Irsyad",
     "university": "Universitas Indonesia",
     "skills": "Python, HTML",
-    "profession": "Data Science"
+    "profession": "Data Science",
+    "summary":"Next, we draw a line and then enter several lines of text that we defined earlier inside a list. The first line defines the starting x and y position of the text. The next two lines set the font, font-size and font-color of the text. The next two lines traverse through each element in the list and add it as a line to the text. The last line draws the text to the screen."
 }]
