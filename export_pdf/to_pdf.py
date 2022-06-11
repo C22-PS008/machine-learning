@@ -24,7 +24,7 @@ skills = df.loc[0, 'skills']
 profession = df.loc[0, 'profession']
 title_name="Test"
 output_filename='test2.pdf'
-user_info=f"Name : {name} Institution: {univ} Skills: {skills} Profession: {profession}"
+user_info=f"Name : {name}<br/> Institution: {univ}<br/> Skills: {skills}<br/> Profession: {profession}"
 document=["name", "university", "skills", "profession"]
 report=SimpleDocTemplate(output_filename, pagesize=A4)
 styles = getSampleStyleSheet()
