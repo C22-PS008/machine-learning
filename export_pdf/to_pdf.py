@@ -1,3 +1,4 @@
+from numpy import empty
 import pandas as pd
 import json
 from reportlab.platypus import Paragraph, Spacer, Table, Image, SimpleDocTemplate, PageBreak
@@ -18,17 +19,23 @@ def export_to_pdf(json_filename, output_filename):
 
     summarize= df.loc[0, 'summary']
 
-    title_name="Test"
+    title_name="Konsult-in Chatbot Summary"
     output_filename='test2.pdf'
-    user_info=f"Name : {name}<br/> Institution: {univ}<br/> Skills: {skills}<br/> Profession: {profession}"
-    summary_text=f"Summary : <br/> {summarize}"
+    user_info=f'''Name      : {name}<br/> 
+                Institution : {univ}<br/> 
+                Skills      : {skills}<br/> 
+                Profession  : {profession}'''
+    summary_text="Summary :"
+    
     report=SimpleDocTemplate(output_filename, pagesize=A4)
     styles = getSampleStyleSheet()
-    empty_line=Spacer(0,20)
+    section_spacing=Spacer(0,20)
+    empty_line=Spacer(0,10)
     ReportTitle = Paragraph(title_name)
     UserInformation = Paragraph(user_info)
     Summary = Paragraph(summary_text)
-    report.build([ReportTitle,empty_line,UserInformation,empty_line,Summary])
+    ChatbotSummary = Paragraph(summarize)
+    report.build([ReportTitle,section_spacing,UserInformation,section_spacing,Summary,empty_line,ChatbotSummary])
 
 result=export_to_pdf('dataset.json','test.pdf')
 print(result)
