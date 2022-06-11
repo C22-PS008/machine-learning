@@ -17,9 +17,14 @@ Model and tokenizer used is `GPT2` from `transformer`.
 tokenizer = GPT2Tokenizer.from_pretrained('gpt2')
 model = GPT2Model.from_pretrained('gpt2')
 ```
-Tokenizer from `indonlu` also used.
+Dataset from `indonlu` used as well.
 ```
-
+torch_train_dataset = DataLoader(tokenize_indonlu_dataset["train"],shuffle=True,collate_fn=pytorch_data_collator,
+    batch_size=16,
+)
+torch_validation_dataset = DataLoader(
+    tokenize_indonlu_dataset["validation"], collate_fn=pytorch_data_collator, batch_size=16
+)
 ```
 
 ## Preprocessing and Tokenizing
@@ -61,5 +66,3 @@ DEFINE FUNCTION process_token_list(token_list):
 
     RETURN new_token_list
 ```
-
-## Training and Save the Model
