@@ -3,10 +3,10 @@ import json
 from jinja2 import Environment, FileSystemLoader
 from weasyprint import HTML
 
-def export_to_pdf(df, filename):
+def export_to_pdf(json_filename, output_filename):
     file = open(filename, 'r')
     data=json.load(file)
-    df.pd.json_normalize(data)
+    df=pd.json_normalize(data)
     name = df.loc[0, 'name']
     univ = df.loc[0, 'university']
     skills = df.loc[0, 'skills']
