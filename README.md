@@ -7,7 +7,9 @@ Huge thanks to [HuggingFace](https://huggingface.co) for easy to use pipeline, d
 ## Code Reference, Base Model, Dataset
 
 -[Chatbot Intent Based](/train/chatbot-intents-based/README.md)
-
+-[Named Entity Recognition](/train/named-entity-recognition/README.md)
+-[Dialogue GPT Based](/train/dialog-gpt-based/README.md)
+-[Dialogue Summarization](/train/dialogue-summarization/README.md)
 
 ## How to use the api:
 
@@ -22,7 +24,7 @@ Huge thanks to [HuggingFace](https://huggingface.co) for easy to use pipeline, d
     sh api.sh
 ```
 
-  This will depedenciesand run api code on api directory.
+  This will depedencies and run api code on api directory.
 2. Second Method
 
 ```
