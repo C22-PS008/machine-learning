@@ -1,10 +1,13 @@
+from signal import SIGKILL
 from flask import Flask, request, jsonify
 from flask_restful import Api, Resource, reqparse
 import pathlib
+
+from tensorboard import summary
 user_input_args=reqparse.RequestParser()
 user_input_args.add_argument('message', type=str, help='message')
 user_input_args.add_argument('age', type=int, help='age')
-import export_pdf
+import to_pdf
 
 
 app=Flask(__name__)
@@ -61,8 +64,25 @@ class get_age(Resource):
         user_input_dict['age']=user_age
         return jsonify(user_input_dict)
 
+class create_pdf(Resource):
+    def post(self):
+        input=user_input_args.parse_args()
+        name=input["name"]
+        skill=input["skill"]
+        profession=input["profession"]
+        summary=input["summary"]
+        json_dict={'name':name, 'skill':skill, 'profession':profession, 'summary':summary}
+        with open('../../export_pdf/user.json', 'w') as json_file:
+            json.dump(personDict, json_file)
+        to_pdf.create_pdf('user.json','user.pdf')
+        return jsonify(json_dict)
+        
+@app.route('/uploads/export_pdf/user.pdf')
+def download_file(filename):
+    return send_from_directory(directory='../../export_pdf',filename='user.pdf' , as_attachment=True)
 
 api.add_resource(get_user_call_name, '/chatbot/getusercallname')
 api.add_resource(get_age, '/chatbot/getage')
+api.add_resource(create_pdf, '/chatbot/createpdf')
 
 app.run(host="0.0.0.0",port=23450,debug=True)

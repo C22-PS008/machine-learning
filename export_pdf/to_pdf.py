@@ -20,7 +20,7 @@ def export_to_pdf(json_filename, output_filename):
     summarize= df.loc[0, 'summary']
 
     title_name="Konsult-in Chatbot Summary"
-    output_filename='test2.pdf'
+    output_filename=output_filename
     user_info=f'''Name      : {name}<br/> 
                 Institution : {univ}<br/> 
                 Skills      : {skills}<br/> 
